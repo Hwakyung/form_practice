@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+{%block body%}
+<h1>index</h1>
+{%for m in movie %}
+<form action="{% url 'movies:detail' m.id %}" method="post">
+    {%csrf_token%}
+    <p>{{m.title}}</p>
+    <input type="submit" value='detail_info'>
+
+</form>
+{%endfor%}
+{% endblock%}

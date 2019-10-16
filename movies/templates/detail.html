@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block body%}
+<h1>index</h1>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{movie.title}} {{movie.title_en}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">개봉일:{{movie.open_date}}</li>
+        <li class="list-group-item">누적 관객수:{{movie.audience}}</li>
+        <li class="list-group-item">장르:{{movie.genre}}</li>
+        <li class="list-group-item">관람등급:{{movie.watch_grade}}</li>
+        <li class="list-group-item">점수:{{movie.score}}</li>
+        <li class="list-group-item">포스터:{{movie.poster_url}}</li>
+        <li class="list-group-item">줄거리:{{movie.description}}</li>
+
+    </ul>
+    <div class="card-body">
+        <form action="{%url 'movies:create_comment' movie.id%}" method='post'>
+            {%csrf_token%}
+
+            <input type="submit" class="btn btn-warning">
+        </form>
+        <a href="#" class="card-link">Another link</a>
+    </div>
+</div>
+
+{% endblock%}
